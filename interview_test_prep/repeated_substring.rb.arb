@@ -1,0 +1,18 @@
+
+# 1. iterate through substrings from str[0]..str[0] to str[0]..str[middle_index]
+# 2. if str.gsub(substring, "") == "" return true 
+
+
+def repeated_substring_pattern(str)
+  mid_idx = str.size.odd? ? str.size / 2 : (str.size / 2) - 1
+  (0..mid_idx).each do |idx|
+    return true if str.gsub(str[0..idx], "") == ""
+  end
+  false
+end
+
+p repeated_substring_pattern("abab") == true
+p repeated_substring_pattern("aba") == false
+p repeated_substring_pattern("aabaaba") == false
+p repeated_substring_pattern("abaababaab") == true
+p repeated_substring_pattern("abcabcabcabc") == true
